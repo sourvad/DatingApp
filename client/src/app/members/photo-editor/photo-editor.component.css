@@ -1,0 +1,12 @@
+.nv-file-over    {
+    border: dotted 3px red;
+}
+
+input[type=file] {
+    color: transparent;
+}
+
+.isMain {
+    border: solid 1px limegreen;
+    box-shadow: 0 0 1px 1px limegreen;
+}
