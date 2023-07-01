@@ -12,7 +12,7 @@ export class NavComponent implements OnInit {
 
   constructor(
     public accountService: AccountService, 
-    private router: Router,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -22,7 +22,7 @@ export class NavComponent implements OnInit {
   login() {
     this.accountService.login(this.model).subscribe({
       next: _ => this.router.navigateByUrl('/members')
-    })
+    });
   }
 
   logout() {
