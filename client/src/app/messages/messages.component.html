@@ -58,7 +58,7 @@
                         <strong>{{message.senderUsername | titlecase}}</strong>
                     </div>
                 </td>
-                <td>{{message.dateSent + 'Z' | timeago}}</td>
+                <td>{{message.dateSent | timeago}}</td>
                 <td>
                     <button (click)="$event.stopPropagation()" class="btn btn-danger" (click)="deleteMessage(message.id)">Delete</button>
                 </td>
