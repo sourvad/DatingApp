@@ -2,6 +2,9 @@ using API.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 
+
+// TODO: Send X unread messages upon connection
+
 namespace API.SignalR
 {
     [Authorize]
