@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+// TODO: Redirect from here to matches if user is already logged in
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
