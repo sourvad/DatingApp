@@ -476,5 +476,3 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 API/appsettings.json
-API/wwwroot/*
-!API/wwwroot/assets
