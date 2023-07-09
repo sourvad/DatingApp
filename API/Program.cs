@@ -18,11 +18,6 @@ var connString = "";
 if (builder.Environment.IsDevelopment())
 {
     connString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-    builder.Services.AddDbContext<DataContext>(opt => 
-    {
-        opt.UseSqlite(connString);
-    });
 } 
 else 
 {
@@ -42,12 +37,12 @@ else
     var updatedHost = pgHost.Replace("flycast", "internal");
 
     connString = $"Server={updatedHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
-
-    builder.Services.AddDbContext<DataContext>(opt =>
-    {
-        opt.UseNpgsql(connString);
-    });
 }
+
+builder.Services.AddDbContext<DataContext>(opt =>
+{
+    opt.UseNpgsql(connString);
+});
 
 var app = builder.Build();
 
@@ -58,7 +53,7 @@ app.UseCors(builder => builder.
     AllowAnyHeader().
     AllowAnyMethod().
     AllowCredentials().
-    WithOrigins("https://localhost:4200"));
+    WithOrigins("https://localhost:4200", "https://sv-datingapp.fly.dev"));
 
 app.UseAuthentication();
 app.UseAuthorization();
