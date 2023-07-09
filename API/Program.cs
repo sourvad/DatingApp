@@ -18,10 +18,15 @@ var connString = "";
 if (builder.Environment.IsDevelopment())
 {
     connString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+    builder.Services.AddDbContext<DataContext>(opt => 
+    {
+        opt.UseSqlite(connString);
+    });
 } 
 else 
 {
-    // Use connection string provided at runtime by Heroku.
+    // Use connection string provided at runtime by fly.io.
     var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 
     // Parse connection URL to connection string for Npgsql
@@ -37,12 +42,12 @@ else
     var updatedHost = pgHost.Replace("flycast", "internal");
 
     connString = $"Server={updatedHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
-}
 
-builder.Services.AddDbContext<DataContext>(opt =>
-{
-    opt.UseNpgsql(connString);
-});
+    builder.Services.AddDbContext<DataContext>(opt =>
+    {
+        opt.UseNpgsql(connString);
+    });
+}
 
 var app = builder.Build();
 
